@@ -332,76 +332,79 @@ strSQL = "\nSET ANSI_NULLS ON"+
        "\n CHECK CONSTRAINT[FK_UsuarioOut]"+
 "\nGO";
                 DB.ExecuteQuery(strSQL);
-/****** Object:  StoredProcedure [dbo].[add_buy]    Script Date: 21/12/2020 20:03:22 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
+                /****** Object:  StoredProcedure [dbo].[add_buy]    Script Date: 21/12/2020 20:03:22 ******/
+                strSQL = "/nSET ANSI_NULLS ON" +
+               "/nGO" +
+               "/nSET QUOTED_IDENTIFIER ON" +
+               "/nGO" +
 
-Create Procedure[dbo].[add_buy]
-        @id int,
-@user int,
-@quantity int,
-@Article int,
-@comment varchar(50),
-@total_sale decimal(4,2)
-As
-Declare @cant INT
-select @cant = Cantidad from Inventario where Articulo = @Article
-if (Select COUNT(*) from Producto where id_producto = @Article)>0
-Begin
-insert into Entradas Values(@id,default, @user, @quantity, @Article, @comment, @total_sale)
-update Inventario SET Cantidad = @cant + @quantity where Articulo = @Article
-End
-else
-Begin
-PRINT 'Cantidad pedida rebasa a la de stock'
-End
+               "/nCreate Procedure[dbo].[add_buy]" +
+                       "/n@id int," +
+               "/n@user int," +
+               "/n@quantity int," +
+               "/n@Article int," +
+               "/n@comment varchar(50)," +
+               "/n@total_sale decimal(4,2)" +
+               "/nAs" +
+               "/nDeclare @cant INT" +
+               "/nselect @cant = Cantidad from Inventario where Articulo = @Article" +
+               "/nif (Select COUNT(*) from Producto where id_producto = @Article)>0" +
+               "/nBegin" +
+               "/ninsert into Entradas Values(@id,default, @user, @quantity, @Article, @comment, @total_sale)" +
+               "/nupdate Inventario SET Cantidad = @cant + @quantity where Articulo = @Article" +
+               "/nEnd" +
+               "/nelse" +
+               "/nBegin" +
+               "/nPRINT 'Cantidad pedida rebasa a la de stock'" +
+               "/nEnd" +
 
-GO
-/****** Object:  StoredProcedure [dbo].[add_client]    Script Date: 21/12/2020 20:03:22 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-Create Procedure[dbo].[add_client]
-        @name varchar(50)
-AS
-if(select COUNT(*) from Usuario where Nombre = @name)=0
-Begin
-insert into Cliente values(@name)
-End
-ELSE
-Begin
-Print 'Ya hay un usuario con ese nombre'
-End
+               "/nGO";
+                DB.ExecuteQuery(strSQL);
+                /****** Object:  StoredProcedure [dbo].[add_client]    Script Date: 21/12/2020 20:03:22 ******/
+                strSQL = "/nSET ANSI_NULLS ON" +
+ "/nGO" +
+ "/nSET QUOTED_IDENTIFIER ON" +
+ "/nGO" +
+ "/nCreate Procedure[dbo].[add_client]" +
+         "/n@name varchar(50)" +
+ "/nAS" +
+ "/nif (select COUNT(*) from Usuario where Nombre = @name)=0" +
+ "/nBegin" +
+ "/ninsert into Cliente values(@name)" +
+ "/nEnd" +
+ "/nELSE" +
+ "/nBegin" +
+ "/nPrint 'Ya hay un usuario con ese nombre'" +
+ "/nEnd" +
 
-GO
-/****** Object:  StoredProcedure [dbo].[add_products]    Script Date: 21/12/2020 20:03:22 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-Create Procedure[dbo].[add_products]
-        @id int,
-@name varchar(50),
-@categoria Varchar(50),
-@descripcion varchar(50),
-@price decimal(4,2)
-As
-if (Select COUNT(*) From Producto where Nombre = @name)=0
-Begin
-insert into Producto values(@name, @categoria, @descripcion, @price)
-Declare @cod_product int
-Select @cod_product = id_producto from Producto where Nombre=@name--Sacamos el codigo del producto en inventario y lo agregamos a inventario
-insert into Inventario values(@id, @cod_product,0, @descripcion)
-End
-ELSE
-Begin
-PRINT 'Ya existe un producto con ese nombre'
-End
+ "/nGO";
+                DB.ExecuteQuery(strSQL);
+                /****** Object:  StoredProcedure [dbo].[add_products]    Script Date: 21/12/2020 20:03:22 ******/
+                strSQL = "/nSET ANSI_NULLS ON" +
+   "/nGO" +
+   "/nSET QUOTED_IDENTIFIER ON" +
+   "/nGO" +
+   "/nCreate Procedure[dbo].[add_products]" +
+           "/n@id int," +
+   "/n@name varchar(50)," +
+   "/n@categoria Varchar(50)," +
+   "/n@descripcion varchar(50)," +
+   "/n@price decimal(4,2)" +
+   "/nAs" +
+   "/nif (Select COUNT(*) From Producto where Nombre = @name)=0" +
+   "/nBegin" +
+   "/ninsert into Producto values(@name, @categoria, @descripcion, @price)" +
+   "/nDeclare @cod_product int" +
+   "/nSelect @cod_product = id_producto from Producto where Nombre=@name--Sacamos el codigo del producto en inventario y lo agregamos a inventario" +
+   "/ninsert into Inventario values(@id, @cod_product,0, @descripcion)" +
+   "/nEnd" +
+   "/nELSE" +
+   "/nBegin" +
+   "/nPRINT 'Ya existe un producto con ese nombre'" +
+   "/nEnd" +
 
-GO
+   "/nGO";
+                DB.ExecuteQuery(strSQL);
 /****** Object:  StoredProcedure [dbo].[add_sale]    Script Date: 21/12/2020 20:03:22 ******/
 SET ANSI_NULLS ON
 GO
