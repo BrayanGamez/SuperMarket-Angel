@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace market_angel
 {
@@ -32,8 +33,9 @@ namespace market_angel
             bool bReturn = true;
             try
             {
-                string strConection = "Server=" + u_strServerName + ";Database=" + u_strInitialCatalog + ";Trusted_Connection=True;";
-                SqlConnection conection = new SqlConnection(strConection);
+                string strConnection = "Server=" + strServerName + ";Database=" + strInitialCatalog + ";Trusted_Connection=True;";
+
+                SqlConnection conection = new SqlConnection(strConnection);
 
                 conection.Open();
                 conection.Close();
@@ -48,13 +50,13 @@ namespace market_angel
         public void createConnection() //Aca se crea la cadena de coneccion y la coneccion
         {
             String strConnection = null;
-            strConnection = "Data Source=" + strServerName + ";Initial Catalog=" + strInitialCatalog + ";User ID=" + strUserId + ";Password=" + strPassword;
+            strConnection = "Server=" + strServerName + ";Database=" + strInitialCatalog + ";Trusted_Connection=True;";
             SqlConnection CConnection = new SqlConnection(strConnection);
             CConnection.Open();
             sqlConection = CConnection;
         }
 
-        public int ExecuteQuery(string strQuery)
+        public void ExecuteQuery(string strQuery)
         {
             SqlConnection Conect = SqlConection;
             SqlCommand Query;
@@ -67,13 +69,19 @@ namespace market_angel
 
                 Query.Dispose();
                 sqlCommand = Query;
-
-                return 1;
             }
-            catch (Exception)
+            catch (SqlException ex)
             {
-
-                return -1;
+                StringBuilder errorMessages = new StringBuilder();
+                for (int i = 0; i < ex.Errors.Count; i++)
+                {
+                    errorMessages.Append("Index #" + i + "\n" +
+                        "Mensaje: " + ex.Errors[i].Message + "\n" +
+                        "Numero de Linea: " + ex.Errors[i].LineNumber + "\n" +
+                        "Fuente: " + ex.Errors[i].Source + "\n" +
+                        "Procedimiento: " + ex.Errors[i].Procedure + "\n");
+                }
+                MessageBox.Show(errorMessages.ToString(), "Error del Servidor", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
