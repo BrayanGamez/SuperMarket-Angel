@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace market_angel
 {
-    class DataBase
+    public class DataBase
     {
         private string strServerName;
         private string strInitialCatalog;
