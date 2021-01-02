@@ -75,16 +75,46 @@ namespace market_angel
             return DataSet;
         }
 
-        private void ptxButton_Click(object sender, EventArgs e)
+        public void OpenSesion()
         {
-            if (VerificarDatos(txtUser.Text,txtPassword.Text))
+            if (VerificarDatos(txtUser.Text, txtPassword.Text))
             {
                 DataSet UserDataSet = getUserInformation(txtUser.Text, txtPassword.Text);
-                ptxUserPhoto FormWrapper = new ptxUserPhoto(DB,UserDataSet);
+                ptxUserPhoto FormWrapper = new ptxUserPhoto(DB, UserDataSet);
                 FormWrapper.Show();
                 this.Close();
             }
+            else
+            {
+                MessageBox.Show("Error Contraseña o Usuario Invalido", "Error de Autenticacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
+        private void ptxButton_Click(object sender, EventArgs e)
+        {
+            OpenSesion();
+        }
+
+        private void txtUser_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (txtUser.Text != String.Empty)
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    txtPassword.Focus();
+                }
+            }
+        }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (txtPassword.Text != String.Empty && txtUser.Text != String.Empty)
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    OpenSesion();
+                }
+            }
+        }
     }
 }

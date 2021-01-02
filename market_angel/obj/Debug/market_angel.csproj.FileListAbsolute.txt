@@ -8,3 +8,5 @@ C:\Users\Gamez\Documents\Visual Studio 2015\Projects\market_angel\market_angel\o
 C:\Users\Gamez\Documents\Visual Studio 2015\Projects\market_angel\market_angel\obj\Debug\market_angel.pdb
 C:\Users\Gamez\documents\visual studio 2015\Projects\market_angel\market_angel\obj\Debug\market_angel.csprojResolveAssemblyReference.cache
 C:\Users\Gamez\Documents\Visual Studio 2015\Projects\market_angel\market_angel\obj\Debug\market_angel.ptxUserPhoto.resources
+C:\Users\Gamez\Documents\Visual Studio 2015\Projects\market_angel\market_angel\obj\Debug\market_angel.frmInformation.resources
+C:\Users\Gamez\Documents\Visual Studio 2015\Projects\market_angel\market_angel\obj\Debug\market_angel.frmProducts.resources

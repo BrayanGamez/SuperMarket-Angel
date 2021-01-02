@@ -16,6 +16,7 @@ namespace market_angel
     {
         private DataBase DB;
         private DataSet DataSet;
+        private Form privateForm = null;
         public ptxUserPhoto(DataBase Conect,DataSet DataSet)
         {
             InitializeComponent();
@@ -27,8 +28,8 @@ namespace market_angel
         {
             DataSet DS = GetDataSet();
             DataRow Row = DS.Tables["UserTable"].Rows[0];
-            txtUserName.Text = Row["Nombre"].ToString();
-            ptxUserPhotoImg.Image = InversoImg((byte[])Row["Foto"]);
+            lbUserNameSesion.Text = Row["Nombre"].ToString();
+            ptxUserPhotoSesion.Image = InversoImg((byte[])Row["Foto"]);
         }
 
         public Bitmap InversoImg(byte[] imagen)
@@ -64,6 +65,117 @@ namespace market_angel
         private void ptxUserPhoto_Load(object sender, EventArgs e)
         {
             LoadUser();
+        }
+
+        private void followArow(Bunifu.Framework.UI.BunifuFlatButton sender)
+        {
+            Arrow.Top = sender.Top;
+        }
+
+        private void updateControlColor(Bunifu.Framework.UI.BunifuFlatButton sender)
+        {
+            btnCart.Textcolor = Color.White;
+            btnDash.Textcolor = Color.White;
+            btnProducts.Textcolor = Color.White;
+            btnSales.Textcolor = Color.White;
+            btnProvider.Textcolor = Color.White;
+            btnClient.Textcolor = Color.White;
+            btnPlus.Textcolor = Color.White;
+
+            sender.selected = true;
+            if (sender.selected)
+            {
+                sender.Textcolor = Color.Black;
+            }
+        }
+
+        private void loadPanelWrapperForms(Form childForm)
+        {
+            if (privateForm != null)
+                privateForm.Close();
+            privateForm = childForm;
+            privateForm.TopLevel = false;
+            privateForm.Dock = DockStyle.Fill;
+            PanelWrapper.Controls.Add(privateForm);
+            PanelWrapper.Tag = privateForm;
+            privateForm.BringToFront();
+            privateForm.Show();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                frmInformation Info = new frmInformation("Salir");
+                DialogResult Result = new DialogResult();
+                Result = Info.ShowDialog();
+                if (Result == DialogResult.OK)
+                {
+                    Application.Exit();
+                }
+                else
+                {
+                    Info.Close();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private void btnDash_Click(object sender, EventArgs e)
+        {
+            followArow((Bunifu.Framework.UI.BunifuFlatButton)sender);
+            updateControlColor((Bunifu.Framework.UI.BunifuFlatButton)sender);
+        }
+
+        private void btnCart_Click(object sender, EventArgs e)
+        {
+            followArow((Bunifu.Framework.UI.BunifuFlatButton)sender);
+            updateControlColor((Bunifu.Framework.UI.BunifuFlatButton)sender);
+        }
+
+        private void btnProducts_Click(object sender, EventArgs e)
+        {
+            followArow((Bunifu.Framework.UI.BunifuFlatButton)sender);
+            updateControlColor((Bunifu.Framework.UI.BunifuFlatButton)sender);
+            loadPanelWrapperForms(new frmProducts(DB));
+        }
+
+        private void btnSales_Click(object sender, EventArgs e)
+        {
+            followArow((Bunifu.Framework.UI.BunifuFlatButton)sender);
+            updateControlColor((Bunifu.Framework.UI.BunifuFlatButton)sender);
+        }
+
+        private void btnProvider_Click(object sender, EventArgs e)
+        {
+            followArow((Bunifu.Framework.UI.BunifuFlatButton)sender);
+            updateControlColor((Bunifu.Framework.UI.BunifuFlatButton)sender);
+        }
+
+        private void btnClient_Click(object sender, EventArgs e)
+        {
+            followArow((Bunifu.Framework.UI.BunifuFlatButton)sender);
+            updateControlColor((Bunifu.Framework.UI.BunifuFlatButton)sender);
+        }
+
+        private void btnPlus_Click(object sender, EventArgs e)
+        {
+            followArow((Bunifu.Framework.UI.BunifuFlatButton)sender);
+            updateControlColor((Bunifu.Framework.UI.BunifuFlatButton)sender);
+        }
+
+        private void panelSideBar_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void PanelWrapper_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
