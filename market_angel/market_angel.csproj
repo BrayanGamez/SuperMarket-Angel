@@ -52,6 +52,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BunisessDataBase.cs" />
+    <Compile Include="CRUD\CategoriasCrud.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRUD\CategoriasCrud.Designer.cs">
+      <DependentUpon>CategoriasCrud.cs</DependentUpon>
+    </Compile>
     <Compile Include="CRUD\CRUD.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +69,12 @@
     </Compile>
     <Compile Include="CRUD\ProductosCrud.Designer.cs">
       <DependentUpon>ProductosCrud.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DashBoard.Designer.cs">
+      <DependentUpon>DashBoard.cs</DependentUpon>
     </Compile>
     <Compile Include="DataBase.cs" />
     <Compile Include="frmInformation.cs">
@@ -97,11 +109,17 @@
     <Compile Include="Wrapper.Designer.cs">
       <DependentUpon>Wrapper.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CRUD\CategoriasCrud.resx">
+      <DependentUpon>CategoriasCrud.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CRUD\CRUD.resx">
       <DependentUpon>CRUD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CRUD\ProductosCrud.resx">
       <DependentUpon>ProductosCrud.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DashBoard.resx">
+      <DependentUpon>DashBoard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInformation.resx">
       <DependentUpon>frmInformation.cs</DependentUpon>
@@ -194,6 +212,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\categorias.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\camara.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

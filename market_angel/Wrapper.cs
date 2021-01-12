@@ -17,6 +17,7 @@ namespace market_angel
         private DataBase DB;
         private DataSet DataSet;
         private Form privateForm = null;
+       public int id_user;
         public ptxUserPhoto(DataBase Conect,DataSet DataSet)
         {
             InitializeComponent();
@@ -30,6 +31,8 @@ namespace market_angel
             DataRow Row = DS.Tables["UserTable"].Rows[0];
             lbUserNameSesion.Text = Row["Nombre"].ToString();
             ptxUserPhotoSesion.Image = InversoImg((byte[])Row["Foto"]);
+            id_user = (int)Row["id_usuario"];
+            loadPanelWrapperForms(new DashBoard());
         }
 
         public Bitmap InversoImg(byte[] imagen)
@@ -129,6 +132,7 @@ namespace market_angel
         {
             followArow((Bunifu.Framework.UI.BunifuFlatButton)sender);
             updateControlColor((Bunifu.Framework.UI.BunifuFlatButton)sender);
+            loadPanelWrapperForms(new DashBoard());
         }
 
         private void btnCart_Click(object sender, EventArgs e)
@@ -176,6 +180,56 @@ namespace market_angel
         private void PanelWrapper_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void photoHover_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void photoHover_MouseEnter(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void photoHover_MouseLeave(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void btnPhotoNew_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog frmOpen = new OpenFileDialog();
+            DialogResult result = new DialogResult();
+            result = frmOpen.ShowDialog();
+            if (result==DialogResult.OK)
+            {
+                ptxUserPhotoSesion.Image = Image.FromFile(frmOpen.FileName);
+                System.IO.MemoryStream ms = new System.IO.MemoryStream();
+                ptxUserPhotoSesion.Image.Save(ms,System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                try
+                {
+                    string strQuery = $"update Usuario set Foto=@photo where id_usuario=@id_u";
+                    SqlConnection cn = DB.SqlConection;
+                    SqlCommand comando = new SqlCommand(strQuery,cn);
+                    comando.Parameters.AddWithValue("@photo",ms.GetBuffer());
+                    comando.Parameters.AddWithValue("@id_u",id_user);
+                    comando.ExecuteNonQuery();
+                    frmRealizado Checked = new frmRealizado("Foto Actualizada");
+                    DialogResult r = new DialogResult();
+                    r = Checked.ShowDialog();
+                    if (r==DialogResult.OK)
+                    {
+                        Checked.Close();
+                    }
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("Nose pudo cargar la imagen","Error al cargar foto a la BD",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

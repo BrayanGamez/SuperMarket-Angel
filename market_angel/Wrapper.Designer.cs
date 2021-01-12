@@ -31,10 +31,17 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ptxUserPhoto));
             this.DropHeader = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.PanelHeader = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.panelSideBar = new System.Windows.Forms.Panel();
-            this.Arrow = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lbUserNameSesion = new System.Windows.Forms.Label();
+            this.PanelWrapper = new System.Windows.Forms.Panel();
+            this.TagCursor = new System.Windows.Forms.ToolTip(this.components);
+            this.btnPhotoNew = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Arrow = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnPlus = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnClient = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -44,18 +51,13 @@
             this.btnCart = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnDash = new Bunifu.Framework.UI.BunifuFlatButton();
             this.ptxUserPhotoSesion = new System.Windows.Forms.PictureBox();
-            this.lbUserNameSesion = new System.Windows.Forms.Label();
-            this.PanelHeader = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.PanelWrapper = new System.Windows.Forms.Panel();
-            this.TagCursor = new System.Windows.Forms.ToolTip(this.components);
+            this.PanelHeader.SuspendLayout();
             this.panelSideBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPhotoNew)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Arrow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptxUserPhotoSesion)).BeginInit();
-            this.PanelHeader.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // DropHeader
@@ -65,9 +67,31 @@
             this.DropHeader.TargetControl = this.PanelHeader;
             this.DropHeader.Vertical = true;
             // 
+            // PanelHeader
+            // 
+            this.PanelHeader.Controls.Add(this.pictureBox1);
+            this.PanelHeader.Controls.Add(this.label1);
+            this.PanelHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PanelHeader.Location = new System.Drawing.Point(200, 0);
+            this.PanelHeader.Name = "PanelHeader";
+            this.PanelHeader.Size = new System.Drawing.Size(880, 135);
+            this.PanelHeader.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Californian FB", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
+            this.label1.Location = new System.Drawing.Point(20, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(366, 27);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Supermercado Angel   DASHBOARD";
+            // 
             // panelSideBar
             // 
             this.panelSideBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(170)))), ((int)(((byte)(231)))));
+            this.panelSideBar.Controls.Add(this.btnPhotoNew);
             this.panelSideBar.Controls.Add(this.Arrow);
             this.panelSideBar.Controls.Add(this.panel2);
             this.panelSideBar.Controls.Add(this.panel1);
@@ -88,16 +112,6 @@
             this.panelSideBar.TabIndex = 0;
             this.panelSideBar.Paint += new System.Windows.Forms.PaintEventHandler(this.panelSideBar_Paint);
             // 
-            // Arrow
-            // 
-            this.Arrow.Image = global::market_angel.Properties.Resources.Flecha;
-            this.Arrow.Location = new System.Drawing.Point(160, 295);
-            this.Arrow.Name = "Arrow";
-            this.Arrow.Size = new System.Drawing.Size(42, 36);
-            this.Arrow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Arrow.TabIndex = 0;
-            this.Arrow.TabStop = false;
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
@@ -113,6 +127,60 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(180, 2);
             this.panel1.TabIndex = 11;
+            // 
+            // lbUserNameSesion
+            // 
+            this.lbUserNameSesion.AutoSize = true;
+            this.lbUserNameSesion.Font = new System.Drawing.Font("Bodoni MT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbUserNameSesion.ForeColor = System.Drawing.Color.White;
+            this.lbUserNameSesion.Location = new System.Drawing.Point(67, 236);
+            this.lbUserNameSesion.Name = "lbUserNameSesion";
+            this.lbUserNameSesion.Size = new System.Drawing.Size(46, 23);
+            this.lbUserNameSesion.TabIndex = 1;
+            this.lbUserNameSesion.Text = "User";
+            // 
+            // PanelWrapper
+            // 
+            this.PanelWrapper.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelWrapper.Location = new System.Drawing.Point(200, 135);
+            this.PanelWrapper.Name = "PanelWrapper";
+            this.PanelWrapper.Size = new System.Drawing.Size(880, 526);
+            this.PanelWrapper.TabIndex = 2;
+            this.PanelWrapper.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelWrapper_Paint);
+            // 
+            // btnPhotoNew
+            // 
+            this.btnPhotoNew.Image = global::market_angel.Properties.Resources.camara;
+            this.btnPhotoNew.Location = new System.Drawing.Point(170, 206);
+            this.btnPhotoNew.Name = "btnPhotoNew";
+            this.btnPhotoNew.Size = new System.Drawing.Size(14, 15);
+            this.btnPhotoNew.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnPhotoNew.TabIndex = 13;
+            this.btnPhotoNew.TabStop = false;
+            this.TagCursor.SetToolTip(this.btnPhotoNew, "Cambiar Foto");
+            this.btnPhotoNew.Click += new System.EventHandler(this.btnPhotoNew_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(811, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(48, 48);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            this.TagCursor.SetToolTip(this.pictureBox1, "Salir");
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // Arrow
+            // 
+            this.Arrow.Image = global::market_angel.Properties.Resources.Flecha;
+            this.Arrow.Location = new System.Drawing.Point(160, 295);
+            this.Arrow.Name = "Arrow";
+            this.Arrow.Size = new System.Drawing.Size(42, 36);
+            this.Arrow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Arrow.TabIndex = 0;
+            this.Arrow.TabStop = false;
             // 
             // pictureBox2
             // 
@@ -380,65 +448,13 @@
             // 
             // ptxUserPhotoSesion
             // 
+            this.ptxUserPhotoSesion.BackColor = System.Drawing.Color.Transparent;
             this.ptxUserPhotoSesion.Location = new System.Drawing.Point(30, 82);
             this.ptxUserPhotoSesion.Name = "ptxUserPhotoSesion";
             this.ptxUserPhotoSesion.Size = new System.Drawing.Size(134, 139);
             this.ptxUserPhotoSesion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ptxUserPhotoSesion.TabIndex = 2;
             this.ptxUserPhotoSesion.TabStop = false;
-            // 
-            // lbUserNameSesion
-            // 
-            this.lbUserNameSesion.AutoSize = true;
-            this.lbUserNameSesion.Font = new System.Drawing.Font("Bodoni MT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbUserNameSesion.ForeColor = System.Drawing.Color.White;
-            this.lbUserNameSesion.Location = new System.Drawing.Point(67, 236);
-            this.lbUserNameSesion.Name = "lbUserNameSesion";
-            this.lbUserNameSesion.Size = new System.Drawing.Size(46, 23);
-            this.lbUserNameSesion.TabIndex = 1;
-            this.lbUserNameSesion.Text = "User";
-            // 
-            // PanelHeader
-            // 
-            this.PanelHeader.Controls.Add(this.pictureBox1);
-            this.PanelHeader.Controls.Add(this.label1);
-            this.PanelHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelHeader.Location = new System.Drawing.Point(200, 0);
-            this.PanelHeader.Name = "PanelHeader";
-            this.PanelHeader.Size = new System.Drawing.Size(880, 135);
-            this.PanelHeader.TabIndex = 1;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(811, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(48, 48);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            this.TagCursor.SetToolTip(this.pictureBox1, "Salir");
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Californian FB", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
-            this.label1.Location = new System.Drawing.Point(20, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(366, 27);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Supermercado Angel   DASHBOARD";
-            // 
-            // PanelWrapper
-            // 
-            this.PanelWrapper.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelWrapper.Location = new System.Drawing.Point(200, 135);
-            this.PanelWrapper.Name = "PanelWrapper";
-            this.PanelWrapper.Size = new System.Drawing.Size(880, 526);
-            this.PanelWrapper.TabIndex = 2;
-            this.PanelWrapper.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelWrapper_Paint);
             // 
             // ptxUserPhoto
             // 
@@ -452,14 +468,15 @@
             this.Name = "ptxUserPhoto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.ptxUserPhoto_Load);
+            this.PanelHeader.ResumeLayout(false);
+            this.PanelHeader.PerformLayout();
             this.panelSideBar.ResumeLayout(false);
             this.panelSideBar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPhotoNew)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Arrow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptxUserPhotoSesion)).EndInit();
-            this.PanelHeader.ResumeLayout(false);
-            this.PanelHeader.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -485,5 +502,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox Arrow;
+        private System.Windows.Forms.PictureBox btnPhotoNew;
     }
 }
